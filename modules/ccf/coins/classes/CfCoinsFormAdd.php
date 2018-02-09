@@ -97,39 +97,39 @@ class CfCoinsFormAdd extends BxDolFormMedia
             'params' => array('/^([fa]+)$/'),
         );
 
-        $aInputPrivacyViewFans = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'view_fans');
+        $aInputPrivacyViewFans = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'view_fans');
         $aInputPrivacyViewFans['values'] = array_merge($aInputPrivacyViewFans['values'], $aInputPrivacyCustom);
         $aInputPrivacyViewFans['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyComment = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'comment');
+        $aInputPrivacyComment = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'comment');
         $aInputPrivacyComment['values'] = array_merge($aInputPrivacyComment['values'], $aInputPrivacyCustom);
         $aInputPrivacyComment['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyRate = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'rate');
+        $aInputPrivacyRate = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'rate');
         $aInputPrivacyRate['values'] = array_merge($aInputPrivacyRate['values'], $aInputPrivacyCustom);
         $aInputPrivacyRate['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyForum = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'post_in_forum');
+        $aInputPrivacyForum = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'post_in_forum');
         $aInputPrivacyForum['values'] = array_merge($aInputPrivacyForum['values'], $aInputPrivacyCustom);
         $aInputPrivacyForum['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyForumView = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'view_forum');
+        $aInputPrivacyForumView = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'view_forum');
         $aInputPrivacyForumView['values'] = array_merge($aInputPrivacyForumView['values'], $aInputPrivacyCustom);
         $aInputPrivacyForumView['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyUploadPhotos = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'upload_photos');
+        $aInputPrivacyUploadPhotos = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'upload_photos');
         $aInputPrivacyUploadPhotos['values'] = $aInputPrivacyCustom2;
         $aInputPrivacyUploadPhotos['db'] = $aInputPrivacyCustom2Pass;
 
-        $aInputPrivacyUploadVideos = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'upload_videos');
+        $aInputPrivacyUploadVideos = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'upload_videos');
         $aInputPrivacyUploadVideos['values'] = $aInputPrivacyCustom2;
         $aInputPrivacyUploadVideos['db'] = $aInputPrivacyCustom2Pass;
 
-        $aInputPrivacyUploadSounds = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'upload_sounds');
+        $aInputPrivacyUploadSounds = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'upload_sounds');
         $aInputPrivacyUploadSounds['values'] = $aInputPrivacyCustom2;
         $aInputPrivacyUploadSounds['db'] = $aInputPrivacyCustom2Pass;
 
-        $aInputPrivacyUploadFiles = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'upload_files');
+        $aInputPrivacyUploadFiles = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'upload_files');
         $aInputPrivacyUploadFiles['values'] = $aInputPrivacyCustom2;
         $aInputPrivacyUploadFiles['db'] = $aInputPrivacyCustom2Pass;
 
@@ -233,7 +233,7 @@ class CfCoinsFormAdd extends BxDolFormMedia
                     ),
                 ),
 
-                'categories' => $oCategories->getCoinChooser ('cf_coins', (int)$iProfileId, true),
+                'categories' => $oCategories->getGroupChooser ('cf_coins', (int)$iProfileId, true),
 
                 // images
 
@@ -353,7 +353,7 @@ class CfCoinsFormAdd extends BxDolFormMedia
                     'caption' => _t('_cf_coins_form_header_privacy'),
                 ),
 
-                'allow_view_coin_to' => $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'view_coin'),
+                'allow_view_coin_to' => $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'view_coin'),
 
                 'allow_view_fans_to' => $aInputPrivacyViewFans,
 
@@ -365,7 +365,7 @@ class CfCoinsFormAdd extends BxDolFormMedia
 
                 'allow_view_forum_to' => $aInputPrivacyForumView,
 
-                'allow_join_to' => $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'join'),
+                'allow_join_to' => $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'join'),
 
                 'join_confirmation' => array (
                     'type' => 'select',

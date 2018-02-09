@@ -23,7 +23,7 @@ class CfCoinsFormEdit extends CfCoinsFormAdd
         cf_import('BxDolCategories');
         $oCategories = new BxDolCategories();
         $oCategories->getTagObjectConfig ();
-        $this->aInputs['categories'] = $oCategories->getCoinChooser ('cf_coins', (int)$iProfileId, true, $aDataEntry['categories']);
+        $this->aInputs['categories'] = $oCategories->getGroupChooser ('cf_coins', (int)$iProfileId, true, $aDataEntry['categories']);
 
         $this->aInputs = array_merge($this->aInputs, $aFormInputsId);
     }
