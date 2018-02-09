@@ -1,0 +1,18 @@
+#cf_coins_admin_listing .block_cont {
+    padding:1px;
+}
+
+table.cf_coins_actions {
+    border-collapse:collapse;
+    margin:5px;
+    width:100%;
+}
+
+table.cf_coins_actions td {
+    width:33%;
+    text-align:center;
+}
+
+.cf_coins_manage_wrapper {
+    padding:0;
+}

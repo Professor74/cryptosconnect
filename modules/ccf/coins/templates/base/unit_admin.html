@@ -1,0 +1,39 @@
+
+<div class="bx-twig-unit bx-twig-unit-admin cf_coins_unit bx-def-margin-top-auto">
+
+    <div class="cf_sys_unit_checkbox bx-def-round-corners">
+        <input type="checkbox" name="entry[]" value="__id__" />
+    </div>
+
+    <div class="bx-twig-unit-thumb-cont bx-def-margin-sec-right">
+        <a href="__coin_url__"><img class="bx-twig-unit-thumb bx-def-round-corners bx-def-shadow" src="__thumb_url__"></a>
+    </div>
+
+    <div class="bx-twig-unit-info">
+
+        <div class="bx-twig-unit-title bx-def-font-h2">
+            <a href="__coin_url__">__coin_title__</a>
+        </div>
+
+        <div class="bx-twig-unit-line bx-twig-unit-desc">__snippet_text__</div>
+
+        <div class="bx-twig-unit-line bx-twig-unit-special">__fans_count__ <cf_text:_cf_coins_fans /></div>
+
+        <div class="bx-twig-unit-line">__country_city__</div>        
+
+        <cf_if:full>
+
+            <div class="bx-twig-unit-line bx-twig-unit-rate">
+                __rate__
+            </div>
+
+            <div class="bx-twig-unit-line bx-def-font-small bx-def-font-grayed">
+                __created__ <span class="sys-bullet"></span> <cf_text:_From /> <a href="__author_url__">__author__</a>
+            </div>
+
+        </cf_if:full>
+
+    </div>    
+
+</div>
+

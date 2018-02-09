@@ -1,0 +1,21 @@
+
+table.cf_coins_fields {
+    border-collapse:collapse;
+    border-spacing:0px;
+}
+
+td.cf_coins_field_name {
+    margin:0;
+    text-align:left;
+}
+
+td.cf_coins_field_value {
+    margin:0;
+    text-align:left;
+}
+
+.cf_coins_profile_unit {
+    overflow:hidden;
+    float:left;
+}
+

@@ -1,0 +1,46 @@
+div.wall-event-cf_coins {    
+    position: relative;    
+}
+div.bx-coins-wall-caption,
+div.bx-coins-comment-wall-caption {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px center;
+    line-height: 30px; 
+}
+div.wall-event-repost div.wall-caption.bx-coins-wall-caption {
+	padding-left: 5px;
+}
+span.bx-coins-wall-caption-owner {
+    font-weight: bold;
+}
+
+a.bx-coins-wall-caption-link,
+a.bx-coins-wall-caption-link:link {
+    text-decoration: none;
+}
+a.bx-coins-wall-caption-link:hover,
+a.bx-coins-wall-caption-link:active {
+    text-decoration: underline;
+}
+div.bx-coins-wall-content,
+div.bx-coins-comment-wall-content {
+    position: relative;
+}
+div.bx-coins-wall-comments {
+    padding-left: 0px;
+}
+
+/*--- Overwrite default Comment styles ---*/
+div.bx-coins-wall-comments div.cmts {
+    padding: 0px;
+    /*display: none;*/
+}
+div.bx-coins-wall-comments div.cmt-reply {
+    padding: 0px;
+    /*display: none;*/
+}
+div.bx-coins-wall-comments div.thumbnail_block {
+    left: -38px;
+    top: 1px;
+}
