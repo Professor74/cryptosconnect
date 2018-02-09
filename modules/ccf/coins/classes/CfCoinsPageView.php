@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import('BxDolTwigPageView');
+bx_import('BxDolTwigPageView');
 
 class CfCoinsPageView extends BxDolTwigPageView
 {
@@ -121,12 +121,12 @@ class CfCoinsPageView extends BxDolTwigPageView
 
     function getBlockCode_FansUnconfirmed()
     {
-        return parent::_blockFansUnconfirmed (BX_COINS_MAX_FANS);
+        return parent::_blockFansUnconfirmed (CF_COINS_MAX_FANS);
     }
 
     function getCode()
     {
-        $this->_oMain->_processFansActions ($this->aDataEntry, BX_COINS_MAX_FANS);
+        $this->_oMain->_processFansActions ($this->aDataEntry, CF_COINS_MAX_FANS);
 
         return parent::getCode();
     }

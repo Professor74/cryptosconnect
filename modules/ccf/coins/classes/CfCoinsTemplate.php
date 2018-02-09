@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import('BxDolTwigTemplate');
+bx_import('BxDolTwigTemplate');
 
 /*
  * Coins module View
@@ -47,7 +47,7 @@ class CfCoinsTemplate extends BxDolTwigTemplate
             'fans_count' => $aData['fans_count'],
             'country_city' => $this->_oMain->_formatLocation($aData),
             'snippet_text' => $this->_oMain->_formatSnippetText($aData),
-            'cf_if:full' => array (
+            'bx_if:full' => array (
                 'condition' => !$isShort,
                 'content' => array (
                     'author' => getNickName($aData['author_id']),

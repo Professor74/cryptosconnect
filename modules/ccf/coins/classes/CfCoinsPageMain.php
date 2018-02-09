@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import('BxDolTwigPageMain');
+bx_import('BxDolTwigPageMain');
 
 class CfCoinsPageMain extends BxDolTwigPageMain
 {
@@ -32,7 +32,7 @@ class CfCoinsPageMain extends BxDolTwigPageMain
         $oRating = new CfCoinsVoting ('cf_coins', $aDataEntry['id']);
 
         $aVars = array (
-            'cf_if:image' => array (
+            'bx_if:image' => array (
                 'condition' => !$aImage['no_image'] && $aImage['file'],
                 'content' => array (
                     'image_url' => !$aImage['no_image'] && $aImage['file'] ? $aImage['file'] : '',

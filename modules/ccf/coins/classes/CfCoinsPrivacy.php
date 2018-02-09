@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import('BxDolPrivacy');
+bx_import('BxDolPrivacy');
 
 class CfCoinsPrivacy extends BxDolPrivacy
 {
@@ -20,19 +20,19 @@ class CfCoinsPrivacy extends BxDolPrivacy
     }
 
     /**
-     * Check whethere viewer is a member of dynamic coin.
+     * Check whethere viewer is a member of dynamic group.
      *
-     * @param  mixed   $mixedCoinId   dynamic coin ID.
+     * @param  mixed   $mixedGroupId   dynamic group ID.
      * @param  integer $iObjectOwnerId object owner ID.
      * @param  integer $iViewerId      viewer ID.
      * @return boolean result of operation.
      */
-    function isDynamicCoinMember($mixedCoinId, $iObjectOwnerId, $iViewerId, $iObjectId)
+    function isDynamicGroupMember($mixedGroupId, $iObjectOwnerId, $iViewerId, $iObjectId)
     {
         $aDataEntry = array ('id' => $iObjectId, 'author_id' => $iObjectOwnerId);
-        if ('f' == $mixedCoinId)  // fans only
+        if ('f' == $mixedGroupId)  // fans only
             return $this->oModule->isFan ($aDataEntry, $iViewerId, true);
-        elseif ('a' == $mixedCoinId) // admins only
+        elseif ('a' == $mixedGroupId) // admins only
             return $this->oModule->isEntryAdmin ($aDataEntry, $iViewerId);
         return false;
     }

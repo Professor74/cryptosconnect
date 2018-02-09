@@ -44,7 +44,7 @@ DELETE FROM `sys_objects_cmts` WHERE `ObjectName` = 'cf_coins';
 DELETE FROM `sys_objects_views` WHERE `name` = 'cf_coins';
 DELETE FROM `sys_objects_categories` WHERE `ObjectName` = 'cf_coins';
 DELETE FROM `sys_categories` WHERE `Type` = 'cf_coins';
-DELETE FROM `sys_categories` WHERE `Type` = 'cf_photos' AND `Category` = 'Coins';
+DELETE FROM `sys_categories` WHERE `Type` = 'bx_photos' AND `Category` = 'Coins';
 DELETE FROM `sys_objects_tag` WHERE `ObjectName` = 'cf_coins';
 DELETE FROM `sys_tags` WHERE `Type` = 'cf_coins';
 DELETE FROM `sys_objects_search` WHERE `ObjectName` = 'cf_coins';

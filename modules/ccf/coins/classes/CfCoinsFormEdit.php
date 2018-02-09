@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
@@ -20,10 +20,10 @@ class CfCoinsFormEdit extends CfCoinsFormAdd
             ),
         );
 
-        cf_import('BxDolCategories');
+        bx_import('BxDolCategories');
         $oCategories = new BxDolCategories();
         $oCategories->getTagObjectConfig ();
-        $this->aInputs['categories'] = $oCategories->getGroupChooser ('cf_coins', (int)$iProfileId, true, $aDataEntry['categories']);
+        $this->aInputs['categories'] = $oCategories->getCoinChooser ('cf_coins', (int)$iProfileId, true, $aDataEntry['categories']);
 
         $this->aInputs = array_merge($this->aInputs, $aFormInputsId);
     }

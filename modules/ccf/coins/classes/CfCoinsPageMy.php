@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import('BxDolPageView');
+bx_import('BxDolPageView');
 
 class CfCoinsPageMy extends BxDolPageView
 {
@@ -30,7 +30,7 @@ class CfCoinsPageMy extends BxDolPageView
             return '';
 
         $sContent = '';
-        switch (cf_get('cf_coins_filter')) {
+        switch (bx_get('cf_coins_filter')) {
         case 'add_coin':
             $sContent = $this->getBlockCode_Add ();
             break;
@@ -46,10 +46,10 @@ class CfCoinsPageMy extends BxDolPageView
 
         $sBaseUrl = BX_DOL_URL_ROOT . $this->_oConfig->getBaseUri() . "browse/my";
         $aMenu = array(
-            _t('_cf_coins_block_submenu_main') => array('href' => $sBaseUrl, 'active' => !cf_get('cf_coins_filter')),
-            _t('_cf_coins_block_submenu_add_coin') => array('href' => $sBaseUrl . '&cf_coins_filter=add_coin', 'active' => 'add_coin' == cf_get('cf_coins_filter')),
-            _t('_cf_coins_block_submenu_manage_coins') => array('href' => $sBaseUrl . '&cf_coins_filter=manage_coins', 'active' => 'manage_coins' == cf_get('cf_coins_filter')),
-            _t('_cf_coins_block_submenu_pending_coins') => array('href' => $sBaseUrl . '&cf_coins_filter=pending_coins', 'active' => 'pending_coins' == cf_get('cf_coins_filter')),
+            _t('_cf_coins_block_submenu_main') => array('href' => $sBaseUrl, 'active' => !bx_get('cf_coins_filter')),
+            _t('_cf_coins_block_submenu_add_coin') => array('href' => $sBaseUrl . '&cf_coins_filter=add_coin', 'active' => 'add_coin' == bx_get('cf_coins_filter')),
+            _t('_cf_coins_block_submenu_manage_coins') => array('href' => $sBaseUrl . '&cf_coins_filter=manage_coins', 'active' => 'manage_coins' == bx_get('cf_coins_filter')),
+            _t('_cf_coins_block_submenu_pending_coins') => array('href' => $sBaseUrl . '&cf_coins_filter=pending_coins', 'active' => 'pending_coins' == bx_get('cf_coins_filter')),
         );
         return array($sContent, $aMenu, '', '');
     }

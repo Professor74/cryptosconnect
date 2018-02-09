@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import('BxDolSiteMaps');
-cf_import('BxDolPrivacy');
+bx_import('BxDolSiteMaps');
+bx_import('BxDolPrivacy');
 
 /**
  * Sitemaps generator for Coins

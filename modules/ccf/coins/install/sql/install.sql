@@ -312,10 +312,10 @@ INSERT INTO `sys_page_compose` (`Page`, `PageWidth`, `Desc`, `Caption`, `Column`
     ('cf_coins_my', '1140px', 'Administration Owner', '_cf_coins_block_administration_owner', '1', '0', 'Owner', '', '1', '100', 'non,memb', '0'),
     ('cf_coins_my', '1140px', 'User''s coins', '_cf_coins_block_users_coins', '1', '1', 'Browse', '', '0', '100', 'non,memb', '0'),
 
-    ('index', '1140px', 'Coins', '_cf_coins_block_homepage', 0, 0, 'PHP', 'cf_import(''BxDolService''); return BxDolService::call(''coins'', ''homepage_block'');', 1, 71.9, 'non,memb', 0),
-	('profile', '1140px', 'Joined Coins', '_cf_coins_block_my_coins_joined', 0, 0, 'PHP', 'cf_import(''BxDolService''); return BxDolService::call(''coins'', ''profile_block_joined'', array($this->oProfileGen->_iProfileID));', 1, 71.9, 'non,memb', 0),
-    ('profile', '1140px', 'User Coins', '_cf_coins_block_my_coins', 0, 0, 'PHP', 'cf_import(''BxDolService''); return BxDolService::call(''coins'', ''profile_block'', array($this->oProfileGen->_iProfileID));', 1, 71.9, 'non,memb', 0),
-    ('member', '1140px', 'Joined Coins', '_cf_coins_block_my_coins_joined', 0, 0, 'PHP', 'cf_import(''BxDolService''); return BxDolService::call(''coins'', ''profile_block_joined'', array($this->oProfileGen->_iProfileID));', 1, 71.9, 'non,memb', 0);
+    ('index', '1140px', 'Coins', '_cf_coins_block_homepage', 0, 0, 'PHP', 'bx_import(''BxDolService''); return BxDolService::call(''coins'', ''homepage_block'');', 1, 71.9, 'non,memb', 0),
+	('profile', '1140px', 'Joined Coins', '_cf_coins_block_my_coins_joined', 0, 0, 'PHP', 'bx_import(''BxDolService''); return BxDolService::call(''coins'', ''profile_block_joined'', array($this->oProfileGen->_iProfileID));', 1, 71.9, 'non,memb', 0),
+    ('profile', '1140px', 'User Coins', '_cf_coins_block_my_coins', 0, 0, 'PHP', 'bx_import(''BxDolService''); return BxDolService::call(''coins'', ''profile_block'', array($this->oProfileGen->_iProfileID));', 1, 71.9, 'non,memb', 0),
+    ('member', '1140px', 'Joined Coins', '_cf_coins_block_my_coins_joined', 0, 0, 'PHP', 'bx_import(''BxDolService''); return BxDolService::call(''coins'', ''profile_block_joined'', array($this->oProfileGen->_iProfileID));', 1, 71.9, 'non,memb', 0);
 
 -- permalinkU
 INSERT INTO `sys_permalinks` VALUES (NULL, 'modules/?r=coins/', 'm/coins/', 'cf_coins_permalinks');
@@ -358,7 +358,7 @@ INSERT INTO `sys_objects_tag` VALUES (NULL, 'cf_coins', 'SELECT `Tags` FROM `[db
 INSERT INTO `sys_objects_categories` VALUES (NULL, 'cf_coins', 'SELECT `Categories` FROM `[db_prefix]main` WHERE `id` = {iID} AND `status` = ''approved''', 'cf_coins_permalinks', 'm/coins/browse/category/{tag}', 'modules/?r=coins/browse/category/{tag}', '_cf_coins');
 
 INSERT INTO `sys_categories` (`Category`, `ID`, `Type`, `Owner`, `Status`) VALUES 
-('Coins', '0', 'cf_photos', '0', 'active'),
+('Coins', '0', 'bx_photos', '0', 'active'),
 ('Arts & Literature', '0', 'cf_coins', '0', 'active'),
 ('Animals & Pets', '0', 'cf_coins', '0', 'active'),
 ('Activities', '0', 'cf_coins', '0', 'active'),
@@ -450,7 +450,7 @@ INSERT INTO `sys_menu_member` SET `Name` = 'cf_coins', `Eval` = 'return BxDolSer
 -- admin menu
 SET @iMax = (SELECT MAX(`order`) FROM `sys_menu_admin` WHERE `parent_id` = '2');
 INSERT IGNORE INTO `sys_menu_admin` (`parent_id`, `name`, `title`, `url`, `description`, `icon`, `order`) VALUES
-(2, 'cf_coins', '_cf_coins', '{siteUrl}modules/?r=coins/administration/', 'Coins module by CCFTechSpot','users', @iMax+1);
+(2, 'cf_coins', '_cf_coins', '{siteUrl}modules/?r=coins/administration/', 'Coins module by BoonEx','users', @iMax+1);
 
 -- site stats
 SET @iStatSiteOrder := (SELECT `StatOrder` + 1 FROM `sys_stat_site` WHERE 1 ORDER BY `StatOrder` DESC LIMIT 1);
@@ -463,23 +463,23 @@ INSERT INTO `sys_account_custom_stat_elements` VALUES(NULL, '_cf_coins', '__cf_c
 
 -- email templates
 INSERT INTO `sys_email_templates` (`Name`, `Subject`, `Body`, `Desc`, `LangID`) VALUES 
-('cf_coins_broadcast', '<BroadcastTitle>', '<cf_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n<p>Message from <a href="<EntryUrl>"><EntryTitle></a> coin admin:</p> <pre><hr><BroadcastMessage></pre> <hr> \r\n\r\n<cf_include_auto:_email_footer.html />', 'Coins broadcast message', 0),
+('cf_coins_broadcast', '<BroadcastTitle>', '<bx_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n<p>Message from <a href="<EntryUrl>"><EntryTitle></a> coin admin:</p> <pre><hr><BroadcastMessage></pre> <hr> \r\n\r\n<bx_include_auto:_email_footer.html />', 'Coins broadcast message', 0),
 
-('cf_coins_join_request', 'Request To Join Your Coin', '<cf_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p>New request to join your coin: <a href="<EntryUrl>"><EntryTitle></a>.</p> \r\n\r\n<cf_include_auto:_email_footer.html />', 'Join request to a coin', 0),
+('cf_coins_join_request', 'Request To Join Your Coin', '<bx_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p>New request to join your coin: <a href="<EntryUrl>"><EntryTitle></a>.</p> \r\n\r\n<bx_include_auto:_email_footer.html />', 'Join request to a coin', 0),
 
-('cf_coins_join_reject', 'Request To Join A Coin Was Rejected', '<cf_include_auto:_email_header.html />\r\n\r\n <p>Hello <NickName>,</p> <p>Your request to join <a href="<EntryUrl>"><EntryTitle></a> coin was rejected by coin admin.</p> \r\n<cf_include_auto:_email_footer.html />', 'Join coin request was rejected', 0),
+('cf_coins_join_reject', 'Request To Join A Coin Was Rejected', '<bx_include_auto:_email_header.html />\r\n\r\n <p>Hello <NickName>,</p> <p>Your request to join <a href="<EntryUrl>"><EntryTitle></a> coin was rejected by coin admin.</p> \r\n<bx_include_auto:_email_footer.html />', 'Join coin request was rejected', 0),
 
-('cf_coins_join_confirm', 'Your Request To Join A Coin Was Confirmed', '<cf_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n<p>Your request to join <a href="<EntryUrl>"><EntryTitle></a> coin was confirmed by the coin admin.</p> \r\n\r\n<cf_include_auto:_email_footer.html />', 'Join coin request confirmed', 0),
+('cf_coins_join_confirm', 'Your Request To Join A Coin Was Confirmed', '<bx_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n<p>Your request to join <a href="<EntryUrl>"><EntryTitle></a> coin was confirmed by the coin admin.</p> \r\n\r\n<bx_include_auto:_email_footer.html />', 'Join coin request confirmed', 0),
 
-('cf_coins_fan_remove', 'Your Profile Removed From Coin Fans', '<cf_include_auto:_email_header.html /> \r\n\r\n<p>Hello <NickName>,</p> <p>Your profile was removed fans list of <a href="<EntryUrl>"><EntryTitle></a> coin by the coin admin.</p> \r\n\r\n<cf_include_auto:_email_footer.html />', 'Profile Removed From Coin Fans', 0),
+('cf_coins_fan_remove', 'Your Profile Removed From Coin Fans', '<bx_include_auto:_email_header.html /> \r\n\r\n<p>Hello <NickName>,</p> <p>Your profile was removed fans list of <a href="<EntryUrl>"><EntryTitle></a> coin by the coin admin.</p> \r\n\r\n<bx_include_auto:_email_footer.html />', 'Profile Removed From Coin Fans', 0),
 
-('cf_coins_fan_become_admin', 'You Are A Coin Admin Now', '<cf_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p>You are an admin of <a href="<EntryUrl>"><EntryTitle></a> coin now.</p>\r\n\r\n<cf_include_auto:_email_footer.html />', 'Coin admin status granted', 0),
+('cf_coins_fan_become_admin', 'You Are A Coin Admin Now', '<bx_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p>You are an admin of <a href="<EntryUrl>"><EntryTitle></a> coin now.</p>\r\n\r\n<bx_include_auto:_email_footer.html />', 'Coin admin status granted', 0),
 
-('cf_coins_admin_become_fan', 'Your Coin Admin Status Was Revoked', '<cf_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p>Your admin status was revoked from <a href="<EntryUrl>"><EntryTitle></a> coin by the coin creator.</p> \r\n\r\n<cf_include_auto:_email_footer.html />', 'Coin admin status revoked', 0),
+('cf_coins_admin_become_fan', 'Your Coin Admin Status Was Revoked', '<bx_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p>Your admin status was revoked from <a href="<EntryUrl>"><EntryTitle></a> coin by the coin creator.</p> \r\n\r\n<bx_include_auto:_email_footer.html />', 'Coin admin status revoked', 0),
 
-('cf_coins_invitation', 'Invitation to <CoinName> Coin', '<cf_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p><a href="<InviterUrl>"><InviterNickName></a> invited you to <a href="<CoinUrl>"><CoinName> coin</a>.</p> \r\n\r\n<p>\r\n<hr><InvitationText><hr> \r\n</p>\r\n\r\n<cf_include_auto:_email_footer.html />', 'Invitation to coin', 0),
+('cf_coins_invitation', 'Invitation to <CoinName> Coin', '<bx_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p><a href="<InviterUrl>"><InviterNickName></a> invited you to <a href="<CoinUrl>"><CoinName> coin</a>.</p> \r\n\r\n<p>\r\n<hr><InvitationText><hr> \r\n</p>\r\n\r\n<bx_include_auto:_email_footer.html />', 'Invitation to coin', 0),
 
-('cf_coins_sbs', 'Subscription: Coin Details Changed', '<cf_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p><a href="<ViewLink>"><EntryTitle></a> coin details changed: <br /> <ActionName> </p> \r\n<hr>\r\n<p>Cancel this subscription: <a href="<UnsubscribeLink>"><UnsubscribeLink></a></p>\r\n\r\n<cf_include_auto:_email_footer.html />', 'Subscription: coin changes', 0);
+('cf_coins_sbs', 'Subscription: Coin Details Changed', '<bx_include_auto:_email_header.html />\r\n\r\n<p>Hello <NickName>,</p> \r\n\r\n<p><a href="<ViewLink>"><EntryTitle></a> coin details changed: <br /> <ActionName> </p> \r\n<hr>\r\n<p>Cancel this subscription: <a href="<UnsubscribeLink>"><UnsubscribeLink></a></p>\r\n\r\n<bx_include_auto:_email_footer.html />', 'Subscription: coin changes', 0);
 
 
 -- membership actions
@@ -521,10 +521,10 @@ INSERT INTO `sys_alerts` VALUES (NULL , 'profile', 'delete', @iHandler);
 
 INSERT INTO `sys_alerts_handlers` VALUES (NULL, 'cf_coins_media_delete', '', '', 'BxDolService::call(''coins'', ''response_media_delete'', array($this));');
 SET @iHandler := LAST_INSERT_ID();
-INSERT INTO `sys_alerts` VALUES (NULL , 'cf_photos', 'delete', @iHandler);
-INSERT INTO `sys_alerts` VALUES (NULL , 'cf_videos', 'delete', @iHandler);
-INSERT INTO `sys_alerts` VALUES (NULL , 'cf_sounds', 'delete', @iHandler);
-INSERT INTO `sys_alerts` VALUES (NULL , 'cf_files', 'delete', @iHandler);
+INSERT INTO `sys_alerts` VALUES (NULL , 'bx_photos', 'delete', @iHandler);
+INSERT INTO `sys_alerts` VALUES (NULL , 'bx_videos', 'delete', @iHandler);
+INSERT INTO `sys_alerts` VALUES (NULL , 'bx_sounds', 'delete', @iHandler);
+INSERT INTO `sys_alerts` VALUES (NULL , 'bx_files', 'delete', @iHandler);
 
 INSERT INTO `sys_alerts_handlers` VALUES (NULL, 'cf_coins_map_install', '', '', 'if (''wmap'' == $this->aExtras[''uri''] && $this->aExtras[''res''][''result'']) BxDolService::call(''coins'', ''map_install'');');
 SET @iHandler := LAST_INSERT_ID();

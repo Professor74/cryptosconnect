@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
@@ -12,26 +12,26 @@ function cf_coins_import ($sClassPostfix, $aModuleOverwright = array())
         $oMain = BxDolModule::getInstance('CfCoinsModule');
         $a = $oMain->_aModule;
     }
-    cf_import ($sClassPostfix, $a) ;
+    bx_import ($sClassPostfix, $a) ;
 }
 
-cf_import('BxDolPaginate');
-cf_import('BxDolAlerts');
-cf_import('BxDolTwigModule');
+bx_import('BxDolPaginate');
+bx_import('BxDolAlerts');
+bx_import('BxDolTwigModule');
 
-define ('BX_COINS_PHOTOS_CAT', 'Coins');
-define ('BX_COINS_PHOTOS_TAG', 'coins');
+define ('CF_COINS_PHOTOS_CAT', 'Coins');
+define ('CF_COINS_PHOTOS_TAG', 'coins');
 
-define ('BX_COINS_VIDEOS_CAT', 'Coins');
-define ('BX_COINS_VIDEOS_TAG', 'coins');
+define ('CF_COINS_VIDEOS_CAT', 'Coins');
+define ('CF_COINS_VIDEOS_TAG', 'coins');
 
-define ('BX_COINS_SOUNDS_CAT', 'Coins');
-define ('BX_COINS_SOUNDS_TAG', 'coins');
+define ('CF_COINS_SOUNDS_CAT', 'Coins');
+define ('CF_COINS_SOUNDS_TAG', 'coins');
 
-define ('BX_COINS_FILES_CAT', 'Coins');
-define ('BX_COINS_FILES_TAG', 'coins');
+define ('CF_COINS_FILES_CAT', 'Coins');
+define ('CF_COINS_FILES_TAG', 'coins');
 
-define ('BX_COINS_MAX_FANS', 1000);
+define ('CF_COINS_MAX_FANS', 1000);
 
 /**
  * Coins module
@@ -59,16 +59,16 @@ define ('BX_COINS_MAX_FANS', 1000);
  *
  *
  * Memberships/ACL:
- * coins view coin - BX_COINS_VIEW_COIN
- * coins browse - BX_COINS_BROWSE
- * coins search - BX_COINS_SEARCH
- * coins add coin - BX_COINS_ADD_COIN
- * coins comments delete and edit - BX_COINS_COMMENTS_DELETE_AND_EDIT
- * coins edit any coin - BX_COINS_EDIT_ANY_COIN
- * coins delete any coin - BX_COINS_DELETE_ANY_COIN
- * coins mark as featured - BX_COINS_MARK_AS_FEATURED
- * coins approve coins - BX_COINS_APPROVE_COINS
- * coins broadcast message - BX_COINS_BROADCAST_MESSAGE
+ * coins view coin - CF_COINS_VIEW_COIN
+ * coins browse - CF_COINS_BROWSE
+ * coins search - CF_COINS_SEARCH
+ * coins add coin - CF_COINS_ADD_COIN
+ * coins comments delete and edit - CF_COINS_COMMENTS_DELETE_AND_EDIT
+ * coins edit any coin - CF_COINS_EDIT_ANY_COIN
+ * coins delete any coin - CF_COINS_DELETE_ANY_COIN
+ * coins mark as featured - CF_COINS_MARK_AS_FEATURED
+ * coins approve coins - CF_COINS_APPROVE_COINS
+ * coins broadcast message - CF_COINS_BROADCAST_MESSAGE
  *
  *
  *
@@ -159,7 +159,7 @@ class CfCoinsModule extends BxDolTwigModule
         $this->_sFilterName = 'cf_coins_filter';
         $this->_sPrefix = 'cf_coins';
 
-        cf_import ('Privacy', $aModule);
+        bx_import ('Privacy', $aModule);
         $this->_oPrivacy = new CfCoinsPrivacy($this);
 
         $GLOBALS['oCfCoinsModule'] = &$this;
@@ -289,7 +289,7 @@ class CfCoinsModule extends BxDolTwigModule
 
     function actionManageFansPopup ($iEntryId)
     {
-        parent::_actionManageFansPopup ($iEntryId, _t('_cf_coins_caption_manage_fans'), 'getFans', 'isAllowedManageFans', 'isAllowedManageAdmins', BX_COINS_MAX_FANS);
+        parent::_actionManageFansPopup ($iEntryId, _t('_cf_coins_caption_manage_fans'), 'getFans', 'isAllowedManageFans', 'isAllowedManageAdmins', CF_COINS_MAX_FANS);
     }
 
     function actionTags()
@@ -330,7 +330,7 @@ class CfCoinsModule extends BxDolTwigModule
         if (!$this->_oDb->isAnyPublicContent())
             return '';
 
-        cf_import ('PageMain', $this->_aModule);
+        bx_import ('PageMain', $this->_aModule);
         $o = new CfCoinsPageMain ($this);
         $o->sUrlStart = BX_DOL_URL_ROOT . '?';
 
@@ -367,7 +367,7 @@ class CfCoinsModule extends BxDolTwigModule
     {
         $iProfileId = (int)$iProfileId;
         $aProfile = getProfileInfo($iProfileId);
-        cf_import ('PageMain', $this->_aModule);
+        bx_import ('PageMain', $this->_aModule);
         $o = new CfCoinsPageMain ($this);
         $o->sUrlStart = getProfileLink($aProfile['ID']) . '?';
 
@@ -390,9 +390,9 @@ class CfCoinsModule extends BxDolTwigModule
     {
         $iProfileId = (int)$iProfileId;
         $aProfile = getProfileInfo($iProfileId);
-        cf_import ('PageMain', $this->_aModule);
+        bx_import ('PageMain', $this->_aModule);
         $o = new CfCoinsPageMain ($this);
-        $o->sUrlStart = $_SERVER['PHP_SELF'] . '?' . cf_encode_url_params($_GET, array('page'));
+        $o->sUrlStart = $_SERVER['PHP_SELF'] . '?' . bx_encode_url_params($_GET, array('page'));
         return $o->ajaxBrowse(
             'joined',
             $this->_oDb->getParam('cf_coins_perpage_profile'),
@@ -461,7 +461,7 @@ class CfCoinsModule extends BxDolTwigModule
             'txt_privacy_view_event' => 'view_coin',
             'obj_privacy' => $this->_oPrivacy,
             'templates' => array(
-                'coined' => 'wall_outline_coined'
+                'grouped' => 'wall_outline_grouped'
             )
         );
         return parent::_serviceGetWallPostOutline($aEvent, 'users', $aParams);
@@ -580,7 +580,7 @@ class CfCoinsModule extends BxDolTwigModule
 
     function onEventJoinRequest ($iEntryId, $iProfileId, $aDataEntry)
     {
-        parent::_onEventJoinRequest ($iEntryId, $iProfileId, $aDataEntry, 'cf_coins_join_request', BX_COINS_MAX_FANS);
+        parent::_onEventJoinRequest ($iEntryId, $iProfileId, $aDataEntry, 'cf_coins_join_request', CF_COINS_MAX_FANS);
     }
 
     function onEventJoinReject ($iEntryId, $iProfileId, $aDataEntry)
@@ -618,11 +618,11 @@ class CfCoinsModule extends BxDolTwigModule
 
         // check admin acl
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_VIEW_COIN, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_VIEW_COIN, $isPerformAction);
         if ($aCheck[CHECK_ACTION_RESULT] != CHECK_ACTION_RESULT_ALLOWED)
             return false;
 
-        // check user coin
+        // check user group
         return $this->_oPrivacy->check('view_coin', $aDataEntry['id'], $this->_iProfileId);
     }
 
@@ -631,7 +631,7 @@ class CfCoinsModule extends BxDolTwigModule
         if ($this->isAdmin())
             return true;
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_BROWSE, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_BROWSE, $isPerformAction);
         return $aCheck[CHECK_ACTION_RESULT] == CHECK_ACTION_RESULT_ALLOWED;
     }
 
@@ -640,7 +640,7 @@ class CfCoinsModule extends BxDolTwigModule
         if ($this->isAdmin())
             return true;
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_SEARCH, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_SEARCH, $isPerformAction);
         return $aCheck[CHECK_ACTION_RESULT] == CHECK_ACTION_RESULT_ALLOWED;
     }
 
@@ -651,7 +651,7 @@ class CfCoinsModule extends BxDolTwigModule
         if (!$GLOBALS['logged']['member'])
             return false;
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_ADD_COIN, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_ADD_COIN, $isPerformAction);
         return $aCheck[CHECK_ACTION_RESULT] == CHECK_ACTION_RESULT_ALLOWED;
     }
 
@@ -662,7 +662,7 @@ class CfCoinsModule extends BxDolTwigModule
 
         // check acl
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_EDIT_ANY_COIN, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_EDIT_ANY_COIN, $isPerformAction);
         return $aCheck[CHECK_ACTION_RESULT] == CHECK_ACTION_RESULT_ALLOWED;
     }
 
@@ -671,7 +671,7 @@ class CfCoinsModule extends BxDolTwigModule
         if ($this->isAdmin())
             return true;
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_MARK_AS_FEATURED, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_MARK_AS_FEATURED, $isPerformAction);
         return $aCheck[CHECK_ACTION_RESULT] == CHECK_ACTION_RESULT_ALLOWED;
     }
 
@@ -680,7 +680,7 @@ class CfCoinsModule extends BxDolTwigModule
         if ($this->isAdmin() || $this->isEntryAdmin($aDataEntry))
             return true;
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_BROADCAST_MESSAGE, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_BROADCAST_MESSAGE, $isPerformAction);
         return $aCheck[CHECK_ACTION_RESULT] == CHECK_ACTION_RESULT_ALLOWED;
     }
 
@@ -689,7 +689,7 @@ class CfCoinsModule extends BxDolTwigModule
         if ($this->isAdmin() || ($GLOBALS['logged']['member'] && $aDataEntry['author_id'] == $this->_iProfileId && isProfileActive($this->_iProfileId)))
             return true;
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_DELETE_ANY_COIN, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_DELETE_ANY_COIN, $isPerformAction);
         return $aCheck[CHECK_ACTION_RESULT] == CHECK_ACTION_RESULT_ALLOWED;
     }
 
@@ -700,7 +700,7 @@ class CfCoinsModule extends BxDolTwigModule
         if ($this->isAdmin())
             return true;
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_APPROVE_COINS, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_APPROVE_COINS, $isPerformAction);
         return $aCheck[CHECK_ACTION_RESULT] == CHECK_ACTION_RESULT_ALLOWED;
     }
 
@@ -818,7 +818,7 @@ class CfCoinsModule extends BxDolTwigModule
         if (getParam('cf_coins_author_comments_admin') && $this->isEntryAdmin($aDataEntry))
             return true;
         $this->_defineActions();
-        $aCheck = checkAction($this->_iProfileId, BX_COINS_COMMENTS_DELETE_AND_EDIT, $isPerformAction);
+        $aCheck = checkAction($this->_iProfileId, CF_COINS_COMMENTS_DELETE_AND_EDIT, $isPerformAction);
         return $aCheck[CHECK_ACTION_RESULT] == CHECK_ACTION_RESULT_ALLOWED;
     }
 

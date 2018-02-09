@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import ('BxDolTwigCalendar');
+bx_import ('BxDolTwigCalendar');
 
 class CfCoinsCalendar extends BxDolTwigCalendar
 {

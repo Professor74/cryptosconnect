@@ -1,16 +1,16 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import('BxDolProfileFields');
+bx_import('BxDolProfileFields');
 
 class CfCoinsFormSearch extends BxTemplFormView
 {
     function CfCoinsFormSearch ()
     {
-        cf_import('BxDolCategories');
+        bx_import('BxDolCategories');
         $oCategories = new BxDolCategories();
         $oCategories->getTagObjectConfig ();
         $aCategories = $oCategories->getCategoriesList('cf_coins', (int)$iProfileId, true);

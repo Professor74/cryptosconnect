@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
@@ -8,7 +8,7 @@ require_once(BX_DIRECTORY_PATH_INC . 'profiles.inc.php');
 
 check_logged();
 
-cf_import('BxDolRequest');
+bx_import('BxDolRequest');
 
 class CfCoinsRequest extends BxDolRequest
 {

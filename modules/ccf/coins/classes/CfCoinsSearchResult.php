@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import('BxDolTwigSearchResult');
+bx_import('BxDolTwigSearchResult');
 
 class CfCoinsSearchResult extends BxDolTwigSearchResult
 {
@@ -54,8 +54,8 @@ class CfCoinsSearchResult extends BxDolTwigSearchResult
         switch ($sMode) {
 
             case 'pending':
-                if (false !== cf_get('cf_coins_filter'))
-                    $this->aCurrent['restriction']['keyword'] = array('value' => process_db_input(cf_get('cf_coins_filter'), BX_TAGS_STRIP), 'field' => '','operator' => 'against');
+                if (false !== bx_get('cf_coins_filter'))
+                    $this->aCurrent['restriction']['keyword'] = array('value' => process_db_input(bx_get('cf_coins_filter'), BX_TAGS_STRIP), 'field' => '','operator' => 'against');
                 $this->aCurrent['restriction']['activeStatus']['value'] = 'pending';
                 $this->sBrowseUrl = "administration";
                 $this->aCurrent['title'] = _t('_cf_coins_page_title_pending_approval');
@@ -112,7 +112,7 @@ class CfCoinsSearchResult extends BxDolTwigSearchResult
                 $iProfileId = getID($sValue);
                 $this->aCurrent['title'] = _t('_cf_coins_page_title_browse_by_author', $iProfileId ? getNickName($iProfileId) : $sValue);
 
-                if (cf_get('rss')) {
+                if (bx_get('rss')) {
                     $aData = getProfileInfo($iProfileId);
                     if ($aData['Avatar']) {
                         $a = array ('ID' => $aData['author_id'], 'Avatar' => $aData['thumb']);
@@ -160,7 +160,7 @@ class CfCoinsSearchResult extends BxDolTwigSearchResult
                 $iProfileId = getID($sValue);
                 $this->aCurrent['title'] = _t('_cf_coins_page_title_browse_by_author_joined_coins', $iProfileId ? getNickName($iProfileId) : $sValue);
 
-                if (cf_get('rss')) {
+                if (bx_get('rss')) {
                     $aData = getProfileInfo($iProfileId);
                     if ($aData['Avatar']) {
                         $a = array ('ID' => $aData['author_id'], 'Avatar' => $aData['thumb']);
@@ -172,8 +172,8 @@ class CfCoinsSearchResult extends BxDolTwigSearchResult
                 break;
 
             case 'admin':
-                if (false !== cf_get('cf_coins_filter'))
-                    $this->aCurrent['restriction']['keyword'] = array('value' => process_db_input(cf_get('cf_coins_filter'), BX_TAGS_STRIP), 'field' => '','operator' => 'against');
+                if (false !== bx_get('cf_coins_filter'))
+                    $this->aCurrent['restriction']['keyword'] = array('value' => process_db_input(bx_get('cf_coins_filter'), BX_TAGS_STRIP), 'field' => '','operator' => 'against');
                 $this->aCurrent['restriction']['owner']['value'] = 0;
                 $this->sBrowseUrl = "browse/admin";
                 $this->aCurrent['title'] = _t('_cf_coins_page_title_admin_coins');
@@ -248,13 +248,13 @@ class CfCoinsSearchResult extends BxDolTwigSearchResult
         if (isset($this->aCurrent['rss']))
             $this->aCurrent['rss']['link'] = BX_DOL_URL_ROOT . $oMain->_oConfig->getBaseUri() . $this->sBrowseUrl;
 
-        if (cf_get('rss')) {
+        if (bx_get('rss')) {
             $this->aCurrent['ownFields'][] = 'desc';
             $this->aCurrent['ownFields'][] = 'created';
             $this->aCurrent['paginate']['perPage'] = $oMain->_oDb->getParam('cf_coins_max_rss_num');
         }
 
-        cf_import('Voting', $oMain->_aModule);
+        bx_import('Voting', $oMain->_aModule);
         $oVotingView = new CfCoinsVoting ('cf_coins', 0);
         $this->oVotingView = $oVotingView->isEnabled() ? $oVotingView : null;
 

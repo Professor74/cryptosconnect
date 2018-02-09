@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright (c) CCFTechSpot Pty Limited - http://www.cryptosconnect.cf/
+ * Copyright (c) BoonEx Pty Limited - http://www.ccf.com/
  * CC-BY License - http://creativecommons.org/licenses/by/3.0/
  */
 
-cf_import ('BxDolProfileFields');
-cf_import ('BxDolFormMedia');
+bx_import ('BxDolProfileFields');
+bx_import ('BxDolFormMedia');
 
 class CfCoinsFormAdd extends BxDolFormMedia
 {
@@ -21,8 +21,8 @@ class CfCoinsFormAdd extends BxDolFormMedia
             $this->_aMedia['images'] = array (
                 'post' => 'ready_images',
                 'upload_func' => 'uploadPhotos',
-                'tag' => BX_COINS_PHOTOS_TAG,
-                'cat' => BX_COINS_PHOTOS_CAT,
+                'tag' => CF_COINS_PHOTOS_TAG,
+                'cat' => CF_COINS_PHOTOS_CAT,
                 'thumb' => 'thumb',
                 'module' => 'photos',
                 'title_upload_post' => 'images_titles',
@@ -34,8 +34,8 @@ class CfCoinsFormAdd extends BxDolFormMedia
             $this->_aMedia['videos'] = array (
                 'post' => 'ready_videos',
                 'upload_func' => 'uploadVideos',
-                'tag' => BX_COINS_VIDEOS_TAG,
-                'cat' => BX_COINS_VIDEOS_CAT,
+                'tag' => CF_COINS_VIDEOS_TAG,
+                'cat' => CF_COINS_VIDEOS_CAT,
                 'thumb' => false,
                 'module' => 'videos',
                 'title_upload_post' => 'videos_titles',
@@ -47,8 +47,8 @@ class CfCoinsFormAdd extends BxDolFormMedia
             $this->_aMedia['sounds'] = array (
                 'post' => 'ready_sounds',
                 'upload_func' => 'uploadSounds',
-                'tag' => BX_COINS_SOUNDS_TAG,
-                'cat' => BX_COINS_SOUNDS_CAT,
+                'tag' => CF_COINS_SOUNDS_TAG,
+                'cat' => CF_COINS_SOUNDS_CAT,
                 'thumb' => false,
                 'module' => 'sounds',
                 'title_upload_post' => 'sounds_titles',
@@ -60,8 +60,8 @@ class CfCoinsFormAdd extends BxDolFormMedia
             $this->_aMedia['files'] = array (
                 'post' => 'ready_files',
                 'upload_func' => 'uploadFiles',
-                'tag' => BX_COINS_FILES_TAG,
-                'cat' => BX_COINS_FILES_CAT,
+                'tag' => CF_COINS_FILES_TAG,
+                'cat' => CF_COINS_FILES_CAT,
                 'thumb' => false,
                 'module' => 'files',
                 'title_upload_post' => 'files_titles',
@@ -69,7 +69,7 @@ class CfCoinsFormAdd extends BxDolFormMedia
                 'service_method' => 'get_file_array',
             );
 
-        cf_import('BxDolCategories');
+        bx_import('BxDolCategories');
         $oCategories = new BxDolCategories();
 
         $oProfileFields = new BxDolProfileFields(0);
@@ -97,39 +97,39 @@ class CfCoinsFormAdd extends BxDolFormMedia
             'params' => array('/^([fa]+)$/'),
         );
 
-        $aInputPrivacyViewFans = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'view_fans');
+        $aInputPrivacyViewFans = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'view_fans');
         $aInputPrivacyViewFans['values'] = array_merge($aInputPrivacyViewFans['values'], $aInputPrivacyCustom);
         $aInputPrivacyViewFans['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyComment = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'comment');
+        $aInputPrivacyComment = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'comment');
         $aInputPrivacyComment['values'] = array_merge($aInputPrivacyComment['values'], $aInputPrivacyCustom);
         $aInputPrivacyComment['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyRate = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'rate');
+        $aInputPrivacyRate = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'rate');
         $aInputPrivacyRate['values'] = array_merge($aInputPrivacyRate['values'], $aInputPrivacyCustom);
         $aInputPrivacyRate['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyForum = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'post_in_forum');
+        $aInputPrivacyForum = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'post_in_forum');
         $aInputPrivacyForum['values'] = array_merge($aInputPrivacyForum['values'], $aInputPrivacyCustom);
         $aInputPrivacyForum['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyForumView = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'view_forum');
+        $aInputPrivacyForumView = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'view_forum');
         $aInputPrivacyForumView['values'] = array_merge($aInputPrivacyForumView['values'], $aInputPrivacyCustom);
         $aInputPrivacyForumView['db'] = $aInputPrivacyCustomPass;
 
-        $aInputPrivacyUploadPhotos = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'upload_photos');
+        $aInputPrivacyUploadPhotos = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'upload_photos');
         $aInputPrivacyUploadPhotos['values'] = $aInputPrivacyCustom2;
         $aInputPrivacyUploadPhotos['db'] = $aInputPrivacyCustom2Pass;
 
-        $aInputPrivacyUploadVideos = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'upload_videos');
+        $aInputPrivacyUploadVideos = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'upload_videos');
         $aInputPrivacyUploadVideos['values'] = $aInputPrivacyCustom2;
         $aInputPrivacyUploadVideos['db'] = $aInputPrivacyCustom2Pass;
 
-        $aInputPrivacyUploadSounds = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'upload_sounds');
+        $aInputPrivacyUploadSounds = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'upload_sounds');
         $aInputPrivacyUploadSounds['values'] = $aInputPrivacyCustom2;
         $aInputPrivacyUploadSounds['db'] = $aInputPrivacyCustom2Pass;
 
-        $aInputPrivacyUploadFiles = $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'upload_files');
+        $aInputPrivacyUploadFiles = $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'upload_files');
         $aInputPrivacyUploadFiles['values'] = $aInputPrivacyCustom2;
         $aInputPrivacyUploadFiles['db'] = $aInputPrivacyCustom2Pass;
 
@@ -233,7 +233,7 @@ class CfCoinsFormAdd extends BxDolFormMedia
                     ),
                 ),
 
-                'categories' => $oCategories->getGroupChooser ('cf_coins', (int)$iProfileId, true),
+                'categories' => $oCategories->getCoinChooser ('cf_coins', (int)$iProfileId, true),
 
                 // images
 
@@ -353,7 +353,7 @@ class CfCoinsFormAdd extends BxDolFormMedia
                     'caption' => _t('_cf_coins_form_header_privacy'),
                 ),
 
-                'allow_view_coin_to' => $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'view_coin'),
+                'allow_view_coin_to' => $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'view_coin'),
 
                 'allow_view_fans_to' => $aInputPrivacyViewFans,
 
@@ -365,7 +365,7 @@ class CfCoinsFormAdd extends BxDolFormMedia
 
                 'allow_view_forum_to' => $aInputPrivacyForumView,
 
-                'allow_join_to' => $this->_oMain->_oPrivacy->getGroupChooser($iProfileId, 'coins', 'join'),
+                'allow_join_to' => $this->_oMain->_oPrivacy->getCoinChooser($iProfileId, 'coins', 'join'),
 
                 'join_confirmation' => array (
                     'type' => 'select',
